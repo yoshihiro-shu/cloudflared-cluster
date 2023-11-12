@@ -1,0 +1,19 @@
+# This ConfigMap is just a way to define the cloudflared config.yaml file in k8s.
+# It's useful to define it in k8s, rather than as a stand-alone .yaml file, because
+# this lets you use various k8s templating solutions (e.g. Helm charts) to
+# parameterize your config, instead of just using string literals.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "cloudflared.fullname" . }}-tunnel-config-yaml
+  labels:
+    {{- include "cloudflared.labels" . | nindent 4 }}
+data:
+  config.yaml: |
+    tunnel: {{ .Values.config.tunnelName | quote }}
+    credentials-file: /etc/cloudflared/creds/credential.json
+    metrics: 0.0.0.0:2000
+    ingress:
+      - hostname: {{ .Values.config.domainName | quote }}
+        service: {{ .Values.config.serviceName | quote }}
+      - service: http_status:404
