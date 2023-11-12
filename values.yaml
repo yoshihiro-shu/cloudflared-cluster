@@ -7,8 +7,5 @@ config:
   domainName: ""
   serviceName: ""
 
-autoscaling:
-  enabled: false
-
 credentialJson:
   secretName: ""
