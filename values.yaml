@@ -3,12 +3,12 @@ cloudflared:
   tag: "2022.3.0"
 
 config:
-  tunnelName: bonsai-tunnel
-  domainName: yoshihiro-shu.com
-  serviceName: http://192.168.1.0:80
+  tunnelName: ""
+  domainName: ""
+  serviceName: ""
 
 autoscaling:
   enabled: false
 
 credentialJson:
-  secretName: cloudflared-tunnel-credential-json
+  secretName: ""
