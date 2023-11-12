@@ -53,7 +53,7 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{/*
 Selector labels
 */}}
-{{- define "cloudflared.tunnelselectorLabels" -}}
+{{- define "cloudflared.tunnelSelectorLabels" -}}
 app.kubernetes.io/name: {{ include "cloudflared.name" . }}-tunnel
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
