@@ -8,12 +8,12 @@ metadata:
 spec:
   selector:
     matchLabels:
-      {{ include "cloudflared.tunnelselectorLabels" . | nindent 6 }}
+      {{ include "cloudflared.tunnelSelectorLabels" . | nindent 6 }}
   replicas: 2 # You could also consider elastic scaling for this deployment
   template:
     metadata:
       labels:
-        {{ include "cloudflared.tunnelselectorLabels" . | nindent 8 }}
+        {{ include "cloudflared.tunnelSelectorLabels" . | nindent 8 }}
     spec:
       containers:
       - name: {{ include "cloudflared.fullname" . }}-tunnel
